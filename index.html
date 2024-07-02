@@ -46,11 +46,29 @@
         input[type="submit"]:hover {
             background-color: #218838;
         }
+        .thank-you-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+        }
     </style>
+    <script>
+        function submitForm() {
+            // Handle form submission here (e.g., validate inputs, send data to Salesforce)
+            
+            // Display thank you message and hide form
+            document.getElementById('contactForm').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
+        }
+    </script>
 </head>
 <body>
     <h1>Contact Us</h1>
-    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdL000006MYD0" method="POST">
+    <form id="contactForm" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DdL000006MYD0" method="POST" onsubmit="submitForm(); return false;">
         <input type="hidden" name="oid" value="00DdL000006MYD0">
         <input type="hidden" name="retURL" value="https://www.resilient-raccoon-7w09bh-dev-ed.trailblaze.lightning.force.com/">
         
@@ -82,5 +100,10 @@
         
         <input type="submit" name="submit" value="Submit">
     </form>
+
+    <div id="thankYouMessage" class="thank-you-message" style="display: none;">
+        <h2>Thank you for contacting us!</h2>
+        <p>We will get back to you shortly.</p>
+    </div>
 </body>
 </html>
